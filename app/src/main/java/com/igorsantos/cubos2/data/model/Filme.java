@@ -2,13 +2,13 @@ package com.igorsantos.cubos2.data.model;
 
 public class Filme {
 
-    private final String nome;
+    private final String titulo;
 
-    public Filme(String nome) {
-        this.nome = nome;
+    public Filme(String titulo) {
+        this.titulo = titulo;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTitulo() {
+        return titulo;
     }
 }
