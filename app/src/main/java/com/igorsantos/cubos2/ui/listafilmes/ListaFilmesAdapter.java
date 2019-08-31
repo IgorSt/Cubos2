@@ -3,6 +3,7 @@ package com.igorsantos.cubos2.ui.listafilmes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.igorsantos.cubos2.R;
 import com.igorsantos.cubos2.data.model.Filme;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +34,7 @@ public class ListaFilmesAdapter extends RecyclerView.Adapter<ListaFilmesAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ListaFilmesViewHolder holder, int position) {
-        holder.textTituloFilme.setText(filmes.get(position).getTitulo());
-
+        holder.bind(filmes.get(position));
     }
 
     @Override
@@ -44,12 +45,20 @@ public class ListaFilmesAdapter extends RecyclerView.Adapter<ListaFilmesAdapter.
     static class ListaFilmesViewHolder extends RecyclerView.ViewHolder{
 
         private TextView textTituloFilme;
+        private ImageView imagePosterFilme;
 
         public ListaFilmesViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textTituloFilme = itemView.findViewById(R.id.text_titulo_filme);
+            imagePosterFilme = itemView.findViewById(R.id.image_poster_filme);
+        }
 
+        public void bind(Filme filme){
+            textTituloFilme.setText(filme.getTitulo());
+            Picasso.get()
+                    .load("https://image.tmdb.org/t/p/w342/" + filme.getCaminhoPoster())
+                    .into(imagePosterFilme);
         }
     }
 
