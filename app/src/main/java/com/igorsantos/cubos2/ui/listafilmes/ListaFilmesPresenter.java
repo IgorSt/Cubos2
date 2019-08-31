@@ -20,12 +20,11 @@ public class ListaFilmesPresenter implements ListaFilmesContrato.ListaFilmesPres
 
     @Override
     public void obtemFilmes() {
-        ApiService.getInstance().obterFilmesPopulares("e563e88d9a10ef303247a9d10500cfbc").enqueue(new Callback<FilmesResult>() {
+        ApiService.getInstance().obterFilmesPopulares("e563e88d9a10ef303247a9d10500cfbc", "pt-BR").enqueue(new Callback<FilmesResult>() {
             @Override
             public void onResponse(retrofit2.Call<FilmesResult> call, Response<FilmesResult> response) {
                 if(response.isSuccessful()){
                     final List<Filme> listaFilmes = FilmeMapper.deResponseParaDominio(response.body().getResultadoFilmes());
-
                     view.mostraFilmes(listaFilmes);
                 }else{
                     view.mostraErro();

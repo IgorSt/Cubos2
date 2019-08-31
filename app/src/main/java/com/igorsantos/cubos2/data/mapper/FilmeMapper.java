@@ -12,7 +12,8 @@ public class FilmeMapper {
         List<Filme> listaFilmes = new ArrayList<>();
 
         for (FilmeResponse filmeResponse : listaFilmeResponse){
-            final Filme filme = new Filme(filmeResponse.getTituloOriginal(), filmeResponse.getCaminhoPoster());
+            final Filme filme = new Filme(filmeResponse.getTituloOriginal(), filmeResponse.getCaminhoPoster(),
+                    filmeResponse.getDetalheFilme());
             listaFilmes.add(filme);
         }
         return listaFilmes;

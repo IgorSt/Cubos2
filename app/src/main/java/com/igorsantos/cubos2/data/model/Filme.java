@@ -1,13 +1,17 @@
 package com.igorsantos.cubos2.data.model;
 
-public class Filme {
+import java.io.Serializable;
+
+public class Filme implements Serializable {
 
     private final String titulo;
     private final String caminhoPoster;
+    private final String detalhe;
 
-    public Filme(String titulo, String caminhoPoster) {
+    public Filme(String titulo, String caminhoPoster, String detalhe) {
         this.titulo = titulo;
         this.caminhoPoster = caminhoPoster;
+        this.detalhe = detalhe;
     }
 
     public String getTitulo() {
@@ -16,5 +20,9 @@ public class Filme {
 
     public String getCaminhoPoster() {
         return caminhoPoster;
+    }
+
+    public String getDetalhe() {
+        return detalhe;
     }
 }
